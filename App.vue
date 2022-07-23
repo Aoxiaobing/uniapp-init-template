@@ -1,9 +1,9 @@
 <script>
-	import { authLogin } from './config/util.js'
+	import { authLoginExchangeCode } from './config/util.js'
 	export default {
-		onLaunch: function() {
+		onLaunch: async function() {
 			console.log('App Launch')
-			authLogin()
+			await authLoginExchangeCode()
 		},
 		onShow: function() {
 			console.log('App Show')

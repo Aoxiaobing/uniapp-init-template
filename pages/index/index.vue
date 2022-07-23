@@ -23,6 +23,10 @@ export default {
     async requestAll() {
       const res = await Promise.all([apiGet(), apiPostAnything()]);
       console.log("res", res);
+      // this.$store.commit("SET_TOKEN", { token: "123123123" });
+      // this.$store.commit("SET_NAME", { name: "zhaoheng" });
+      console.log("this.$store.state.token = ", this.$store.state.token);
+      console.log("this.$store.state.name = ", this.$store.state.name);
     },
   },
 };

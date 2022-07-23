@@ -1,25 +1,20 @@
 import { getRequestHost } from "../config/util";
+import store from "../store";
 
-const request = (url, data, method = "GET") => {
+const request = async (url, data, method = "GET") => {
   const reqUrl = getRequestHost() + url;
-  return new Promise((resolve, reject) => {
-    uni.request({
-      url: reqUrl,
-      method,
-      data,
-      success: (res) => {
-        if (res.statusCode === 200) {
-          resolve(res.data);
-        } else {
-          reject(res.data);
-        }
-      },
-      fail: (err) => {
-        reject(err);
-      },
-      complete: () => {},
-    });
+  const header = {};
+  header.token = store.state.token;
+
+  const [err, res] = await uni.request({
+    url: reqUrl,
+    method,
+    data,
   });
+  if (!err) {
+    return res.data;
+  }
+  return err;
 };
 
 export const get = (url, data = {}) => {
