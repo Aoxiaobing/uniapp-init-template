@@ -4,6 +4,8 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+		<u-button>123</u-button>
+		<u-icon name="photo" color="#2979ff" size="28"></u-icon>
   </view>
 </template>
 
