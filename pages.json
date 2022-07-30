@@ -8,10 +8,23 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
-		}, {
+		},
+		{
 			"path": "pages/detail/index",
 			"style": {
 				"navigationBarTitleText": "Detail"
+			}
+		},
+		{
+			"path": "pages/ucharts/index",
+			"style": {
+				"navigationBarTitleText": "ucharts"
+			}
+		},
+		{
+			"path": "pages/ucharts/radar",
+			"style": {
+				"navigationBarTitleText": "radar"
 			}
 		}
 	],

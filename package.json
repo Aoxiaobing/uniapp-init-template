@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "echarts": "^5.3.3",
+    "@qiun/ucharts": "^2.4.3-20220505",
     "vuex": "^4.0.2"
   }
 }
