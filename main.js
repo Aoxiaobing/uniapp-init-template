@@ -1,12 +1,21 @@
 import App from "./App";
 import Vue from "vue";
-import store from './store'
+import store from "./store";
 
 Vue.config.productionTip = false;
-// App.mpType = "app";
 
-import uView from '@/uni_modules/uview-ui'
-Vue.use(uView)
+/**
+ * uView UI
+ */
+import uView from "@/uni_modules/uview-ui";
+Vue.use(uView);
+
+/**
+ * interceptor
+ */
+import { actionInterCeptor } from "./interceptor";
+actionInterCeptor();
+
 
 const app = new Vue({
   store,

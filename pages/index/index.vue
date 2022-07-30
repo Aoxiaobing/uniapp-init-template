@@ -4,13 +4,22 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
-		<u-button>123</u-button>
-		<u-icon name="photo" color="#2979ff" size="28"></u-icon>
+    <u-button @click="handleGoDetail">Detail</u-button>
+    <u-icon name="photo" color="#2979ff" size="28"></u-icon>
+    <!-- <uni-icons custom-prefix="iconfont" type="icon-aixin1" size="30" color="#ff0066"></uni-icons> -->
+    <!-- <uni-icons type="cart" size="30"></uni-icons> -->
+    <!-- <uni-icons type="cart"></uni-icons> -->
+    <text class="iconfont icon-aixin"></text>
+    <text class="iconfont icon-aixin1"></text>
+
+    <!-- <u-icon custom-prefix="iconfont" name="icon-aixin" size="30" color="#ff0066"></u-icon> -->
   </view>
 </template>
 
 <script>
 import { apiGet, apiPostAnything } from "../../api";
+import * as echarts from "echarts/core";
+import { } from "echarts/echarts";
 
 export default {
   data() {
@@ -29,6 +38,11 @@ export default {
       // this.$store.commit("SET_NAME", { name: "zhaoheng" });
       console.log("this.$store.state.token = ", this.$store.state.token);
       console.log("this.$store.state.name = ", this.$store.state.name);
+    },
+    handleGoDetail() {
+      uni.navigateTo({
+        url: "/pages/detail/index",
+      });
     },
   },
 };
