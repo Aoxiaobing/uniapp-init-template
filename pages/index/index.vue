@@ -29,6 +29,7 @@ export default {
 			console.log('res', res);
 			console.log('this.$store.state.token = ', this.$store.state.token);
 			console.log('this.$store.state.name = ', this.$store.state.name);
+			console.log('新建一个commit');
 		},
 		handleGoPoster() {
 			uni.navigateTo({
