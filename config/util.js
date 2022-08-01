@@ -49,7 +49,7 @@ export const getRequestHost = () => {
  * 授权登录换取Code
  */
 export const authLoginExchangeCode = () => {
-	return Promise((resolve, reject) => {
+	return new Promise((resolve, reject) => {
 		uni.login({
 			onlyAuthorize: true,
 			success: res => {

@@ -1,0 +1,81 @@
+<template>
+	<view><canvas canvas-id="column" id="column" class="charts" @touchend="tap" /></view>
+</template>
+
+<script>
+import uCharts from '@qiun/ucharts';
+var uChartsInstance = {};
+export default {
+	data() {
+		return {
+			cWidth: 750,
+			cHeight: 500
+		};
+	},
+	onReady() {
+		//这里的 750 对应 css .charts 的 width
+		this.cWidth = uni.upx2px(750);
+		//这里的 500 对应 css .charts 的 height
+		this.cHeight = uni.upx2px(500);
+		this.getServerData();
+	},
+	methods: {
+		getServerData() {
+			//模拟从服务器获取数据时的延时
+			setTimeout(() => {
+				//模拟服务器返回数据，如果数据格式和标准格式不同，需自行按下面的格式拼接
+				let res = {
+					categories: ['2016', '2017', '2018', '2019', '2020', '2021'],
+					series: [
+						{
+							name: '目标值',
+							data: [35, 36, 31, 33, 13, 34]
+						},
+						{
+							name: '完成量',
+							data: [18, 27, 21, 24, 6, 28]
+						}
+					]
+				};
+				this.drawCharts('column', res);
+			}, 500);
+		},
+		drawCharts(id, data) {
+			const ctx = uni.createCanvasContext(id, this);
+			uChartsInstance[id] = new uCharts({
+				type: 'column',
+				context: ctx,
+				width: this.cWidth,
+				height: this.cHeight,
+				categories: data.categories,
+				series: data.series,
+				animation: true,
+				background: '#FFFFFF',
+				padding: [15, 15, 0, 5],
+				xAxis: {
+					disableGrid: true
+				},
+				yAxis: {
+					data: [{ min: 0 }]
+				},
+				extra: {
+					column: {
+						type: 'group'
+					}
+				}
+			});
+		},
+		tap(e) {
+			uChartsInstance[e.target.id].touchLegend(e);
+			uChartsInstance[e.target.id].showToolTip(e);
+		}
+	}
+};
+</script>
+
+<style scoped>
+.charts {
+	width: 750rpx;
+	height: 500rpx;
+}
+</style>

@@ -1,31 +1,19 @@
-import { getRequestHost } from "../config/util";
-
-const request = (url, data, method = "GET") => {
-  const reqUrl = getRequestHost() + url;
-  return new Promise((resolve, reject) => {
-    uni.request({
-      url: reqUrl,
-      method,
-      data,
-      success: (res) => {
-        if (res.statusCode === 200) {
-          resolve(res.data);
-        } else {
-          reject(res.data);
-        }
-      },
-      fail: (err) => {
-        reject(err);
-      },
-      complete: () => {},
-    });
-  });
+const request = async (url, data, method = "GET") => {
+	const [err, res] = await uni.request({
+		url,
+		method,
+		data,
+	});
+	if (!err) {
+		return res.data;
+	}
+	return err;
 };
 
 export const get = (url, data = {}) => {
-  return request(url, data);
+	return request(url, data);
 };
 
 export const post = (url, data = {}) => {
-  return request(url, data, "POST");
+	return request(url, data, "POST");
 };
