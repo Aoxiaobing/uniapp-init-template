@@ -10,9 +10,9 @@
 			}
 		},
 		{
-			"path": "pages/detail/index",
+			"path": "pages/poster/index",
 			"style": {
-				"navigationBarTitleText": "Detail"
+				"navigationBarTitleText": "poster"
 			}
 		},
 		{
